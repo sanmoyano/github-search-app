@@ -6,7 +6,7 @@ export default extendTheme({
     },
 
     colors: {
-        backgroud: "#141C2F",
+        background: "#141C2F",
         card: "#1F2A48",
         button: "#017AFE",
         user: "#1F4E8A",

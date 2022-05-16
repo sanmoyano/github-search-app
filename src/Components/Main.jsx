@@ -16,22 +16,39 @@ const Main = () => {
         <Stack
             bgColor={colorMode}
             borderRadius={"2xl"}
-            direction="row"
+            direction={"row"}
+            height={"auto"}
             justifyContent={"space-between"}
-            p={12}
+            p={10}
             spacing={6}
             width={"100%"}
         >
             <Stack>
                 <SkeletonCircle size={24} />
             </Stack>
-            <Stack direction={"column"} spacing={6} w={"150px"}>
-                <Skeleton h={"16px"} />
-                <Skeleton h={"16px"} />
-                <Skeleton h={"16px"} />
-            </Stack>
-            <Stack w={"100px"}>
-                <Skeleton h={"16px"} />
+            <Stack spacing={6} w={"100%"}>
+                <Stack direction={"row"} justifyContent={"space-between"} spacing={6}>
+                    <Stack direction={"column"} spacing={6} w={"150px"}>
+                        <Skeleton h={"16px"} />
+                        <Skeleton h={"16px"} />
+                        <Skeleton h={"16px"} />
+                    </Stack>
+                    <Stack w={"100px"}>
+                        <Skeleton h={"16px"} />
+                    </Stack>
+                </Stack>
+                <Stack
+                    bgColor="background"
+                    borderRadius={"2xl"}
+                    direction={"row"}
+                    justifyContent={"space-between"}
+                    p={6}
+                    w={"100%"}
+                >
+                    <Text>HOLA</Text>
+                    <Text>HOLA</Text>
+                    <Text>HOLA</Text>
+                </Stack>
             </Stack>
         </Stack>
     );
