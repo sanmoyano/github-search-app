@@ -20,12 +20,13 @@ const Main = () => {
             height={"auto"}
             justifyContent={"space-between"}
             p={10}
-            spacing={6}
+            spacing={10}
             width={"100%"}
         >
             <Stack>
                 <SkeletonCircle size={24} />
             </Stack>
+
             <Stack spacing={6} w={"100%"}>
                 <Stack direction={"row"} justifyContent={"space-between"} spacing={6}>
                     <Stack direction={"column"} spacing={6} w={"150px"}>
@@ -41,13 +42,26 @@ const Main = () => {
                     bgColor="background"
                     borderRadius={"2xl"}
                     direction={"row"}
-                    justifyContent={"space-between"}
+                    fontSize={"xs"}
+                    justifyContent={"flex-start"}
                     p={6}
+                    spacing={10}
                     w={"100%"}
                 >
-                    <Text>HOLA</Text>
-                    <Text>HOLA</Text>
-                    <Text>HOLA</Text>
+                    <Text>Repos</Text>
+                    <Text>Followers</Text>
+                    <Text>Following</Text>
+                </Stack>
+
+                <Stack direction={"row"} spacing={6} width={"100%"}>
+                    <Stack spacing={4} w={"50%"}>
+                        <Skeleton h={"16px"} />
+                        <Skeleton h={"16px"} />
+                    </Stack>
+                    <Stack spacing={4} w={"50%"}>
+                        <Skeleton h={"16px"} />
+                        <Skeleton h={"16px"} />
+                    </Stack>
                 </Stack>
             </Stack>
         </Stack>
