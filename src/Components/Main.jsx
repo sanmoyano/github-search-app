@@ -11,6 +11,7 @@ import React from "react";
 
 const Main = () => {
     const colorMode = useColorModeValue("gray.100", "card");
+    const infoColorMode = useColorModeValue("gray.300", "background");
 
     return (
         <Stack
@@ -39,7 +40,7 @@ const Main = () => {
                     </Stack>
                 </Stack>
                 <Stack
-                    bgColor="background"
+                    bgColor={infoColorMode}
                     borderRadius={"2xl"}
                     direction={"row"}
                     fontSize={"xs"}
