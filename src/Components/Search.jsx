@@ -31,8 +31,6 @@ const Search = () => {
         id,
         twitter,
         searchUser,
-        initialState,
-        setInitialState,
         handleOnChange,
         handleSubmit,
     } = useContext(DataContext);

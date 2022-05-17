@@ -21,7 +21,6 @@ const DataProvider = ({ children }) => {
     const [twitter, setTwitter] = useState("");
 
     const [searchUser, setSearchUser] = useState([]);
-    const [initialState, setInitialState] = useState("");
 
     const toast = useToast();
 
@@ -100,8 +99,6 @@ const DataProvider = ({ children }) => {
         id,
         twitter,
         searchUser,
-        initialState,
-        setInitialState,
         handleOnChange,
         handleSubmit,
     };
