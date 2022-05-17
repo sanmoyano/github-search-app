@@ -1,8 +1,8 @@
 import { Stack } from "@chakra-ui/react";
 
-import Main from "../Components/Main";
 import Header from "../Components/Header";
 import Search from "../Components/Search";
+import DataProvider from "../Provider/DataProvider";
 
 const Layout = () => {
     return (
@@ -19,7 +19,7 @@ const Layout = () => {
         >
             <Header />
             <Search />
-            <Main />
+            {/* <DataProvider /> */}
         </Stack>
     );
 };
