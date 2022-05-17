@@ -6,21 +6,22 @@ import DataProvider from "../Provider/DataProvider";
 
 const Layout = () => {
     return (
-        <Stack
-            alignContent={"center"}
-            alignItems={"center"}
-            height={"100vh"}
-            justifyContent={"center"}
-            left={"50%"}
-            margin={"auto"}
-            maxW={"600px"}
-            p={6}
-            spacing={10}
-        >
-            <Header />
-            <Search />
-            {/* <DataProvider /> */}
-        </Stack>
+        <DataProvider>
+            <Stack
+                alignContent={"center"}
+                alignItems={"center"}
+                height={"100vh"}
+                justifyContent={"center"}
+                left={"50%"}
+                margin={"auto"}
+                maxW={"600px"}
+                p={6}
+                spacing={10}
+            >
+                <Header />
+                <Search />
+            </Stack>
+        </DataProvider>
     );
 };
 

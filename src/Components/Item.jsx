@@ -4,6 +4,10 @@ const Item = ({ ...props }) => {
     const colorMode = useColorModeValue("gray.100", "card");
     const infoColorMode = useColorModeValue("gray.300", "background");
 
+    const configInfoText = {
+        fontSize: "xs",
+    };
+
     return (
         <Stack
             bgColor={colorMode}
@@ -16,18 +20,20 @@ const Item = ({ ...props }) => {
             width={"100%"}
         >
             <Stack>
-                <Image borderRadius={"full"} src={props.avatar} />
+                <Image borderRadius={"full"} src={props.avatar} w={"150px"} />
             </Stack>
 
             <Stack spacing={6} w={"100%"}>
                 <Stack direction={"column"} justifyContent={"space-between"} spacing={6}>
                     <Stack direction={"row"} spacing={6}>
                         <Stack w={"100%"}>
-                            <Text>{props.name}</Text>
-                            <Text>@{props.login}</Text>
+                            <Text as={"h1"} fontSize={"lg"} fontWeight={"bold"}>
+                                {props.name}
+                            </Text>
+                            <Text color={"button"}>@{props.login}</Text>
                         </Stack>
                         <Stack w={"100%"}>
-                            <Text>user id: {props.id}</Text>
+                            <Text>user id: {props.twitter}</Text>
                         </Stack>
                     </Stack>
                     <Stack>
@@ -51,12 +57,12 @@ const Item = ({ ...props }) => {
 
                 <Stack direction={{ base: "column", md: "row" }} spacing={6} width={"100%"}>
                     <Stack spacing={4} w={"100%"}>
-                        <Text>{props.location}</Text>
-                        <Text>{props.email}</Text>
+                        <Text {...configInfoText}>{props.location}</Text>
+                        <Text {...configInfoText}>{props.email}</Text>
                     </Stack>
                     <Stack spacing={4} w={"100%"}>
-                        <Text>{props.company}</Text>
-                        <Text>{props.blog}</Text>
+                        <Text {...configInfoText}>{props.company}</Text>
+                        <Text {...configInfoText}>{props.blog}</Text>
                     </Stack>
                 </Stack>
             </Stack>

@@ -1,7 +1,8 @@
 import { Button, FormControl, Icon, Input, Stack, useColorModeValue } from "@chakra-ui/react";
 import { BiSearch } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 
+import { DataContext } from "../Provider/DataProvider";
 import Item from "../Components/Item";
 
 const Search = () => {
@@ -15,64 +16,24 @@ const Search = () => {
         size: "md",
         variant: "solid",
     };
-
-    const [avatar, setAvatar] = useState("");
-    const [userName, setUserName] = useState("");
-    const [login, setLogin] = useState("");
-    const [bio, setBio] = useState("");
-    const [repos, setRepos] = useState(0);
-    const [followers, setFollowers] = useState(0);
-    const [following, setFollowing] = useState(0);
-    const [location, setLocation] = useState("");
-    const [email, setEmail] = useState("");
-    const [company, setCompany] = useState("");
-    const [blog, setBlog] = useState("");
-    const [id, setId] = useState(0);
-
-    const [searchUser, setSearchUser] = useState([]);
-
-    const setData = ({
-        avatar_url,
+    const {
+        avatar,
+        userName,
         login,
-        name,
-        id,
         bio,
-        public_repos,
+        repos,
         followers,
         following,
         location,
         email,
         company,
         blog,
-    }) => {
-        setAvatar(avatar_url);
-        setUserName(name);
-        setLogin(login);
-        setBio(bio);
-        setRepos(public_repos);
-        setFollowers(followers);
-        setFollowing(following);
-        setLocation(location);
-        setEmail(email);
-        setCompany(company);
-        setBlog(blog);
-        setId(id);
-    };
-
-    const handleOnChange = (e) => {
-        setSearchUser(e.target.value);
-    };
-
-    const END_POINT = "https://api.github.com/users";
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch(`${END_POINT}/${searchUser}`)
-            .then((response) => response.json())
-            .then((data) => setData(data));
-
-        setSearchUser("");
-    };
+        id,
+        twitter,
+        searchUser,
+        handleOnChange,
+        handleSubmit,
+    } = useContext(DataContext);
 
     return (
         <>
@@ -125,6 +86,7 @@ const Search = () => {
                 login={login}
                 name={userName}
                 repos={repos}
+                twitter={twitter}
             />
         </>
     );
