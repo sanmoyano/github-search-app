@@ -31,6 +31,8 @@ const Search = () => {
         id,
         twitter,
         searchUser,
+        initialState,
+        setInitialState,
         handleOnChange,
         handleSubmit,
     } = useContext(DataContext);
@@ -75,25 +77,22 @@ const Search = () => {
                     </Button>
                 </FormControl>
             </Stack>
-            {searchUser.len ? (
-                <Text> Buscar un usuario </Text>
-            ) : (
-                <Item
-                    avatar={avatar}
-                    bio={bio}
-                    blog={blog}
-                    company={company}
-                    email={email}
-                    followers={followers}
-                    following={following}
-                    id={id}
-                    location={location}
-                    login={login}
-                    name={userName}
-                    repos={repos}
-                    twitter={twitter}
-                />
-            )}
+
+            <Item
+                avatar={avatar}
+                bio={bio}
+                blog={blog}
+                company={company}
+                email={email}
+                followers={followers}
+                following={following}
+                id={id}
+                location={location}
+                login={login}
+                name={userName}
+                repos={repos}
+                twitter={twitter}
+            />
         </>
     );
 };

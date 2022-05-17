@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import { Toast, useToast } from "@chakra-ui/react";
 
 export const DataContext = createContext();
 
@@ -20,6 +21,9 @@ const DataProvider = ({ children }) => {
     const [twitter, setTwitter] = useState("");
 
     const [searchUser, setSearchUser] = useState([]);
+    const [initialState, setInitialState] = useState("");
+
+    const toast = useToast();
 
     const setData = ({
         avatar_url,
@@ -59,9 +63,24 @@ const DataProvider = ({ children }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         fetch(`${END_POINT}/${searchUser}`)
             .then((response) => response.json())
-            .then((data) => setData(data));
+            .then((data) => {
+                if (data.message === "Not Found") {
+                    toast({
+                        position: "top-right",
+                        duration: 3000,
+                        isClosable: true,
+                        isVisible: true,
+                        title: "User Not Found",
+                        description: "Please enter a valid username",
+                        status: "error",
+                    });
+                } else {
+                    setData(data);
+                }
+            });
 
         setSearchUser("");
     };
@@ -81,6 +100,8 @@ const DataProvider = ({ children }) => {
         id,
         twitter,
         searchUser,
+        initialState,
+        setInitialState,
         handleOnChange,
         handleSubmit,
     };
