@@ -79,8 +79,8 @@ const DataProvider = ({ children }) => {
         company,
         blog,
         id,
-        searchUser,
         twitter,
+        searchUser,
         handleOnChange,
         handleSubmit,
     };

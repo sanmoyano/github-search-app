@@ -1,7 +1,9 @@
 import { Box, Icon, Image, Link, Stack, Text, useColorModeValue } from "@chakra-ui/react";
-import { FaTwitter, FaLaptopCode } from "react-icons/fa";
+import { FaTwitter, FaLaptopCode, FaEnvelope } from "react-icons/fa";
 import { BiLink } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
+
+import ItemInfo from "./ItemInfo";
 
 const Item = ({ ...props }) => {
     const colorMode = useColorModeValue("gray.100", "card");
@@ -16,8 +18,14 @@ const Item = ({ ...props }) => {
         fontWeight: "bold",
     };
 
+    const configAvaliableText = {
+        fontSize: "xs",
+        color: "gray.500",
+    };
+
     return (
         <Stack
+            alignItems={{ base: "center", sm: "flex-start" }}
             bgColor={colorMode}
             borderRadius={"2xl"}
             direction={{ base: "column", sm: "row" }}
@@ -28,11 +36,16 @@ const Item = ({ ...props }) => {
             width={"100%"}
         >
             <Stack>
-                <Image borderRadius={"full"} src={props.avatar} w={"150px"} />
+                <Image borderRadius={"full"} src={props.avatar} w={"250px"} />
             </Stack>
 
             <Stack spacing={6} w={"100%"}>
-                <Stack direction={"column"} justifyContent={"space-between"} spacing={6}>
+                <Stack
+                    alignItems={{ base: "center", md: "flex-start" }}
+                    direction={"column"}
+                    justifyContent={"space-between"}
+                    spacing={6}
+                >
                     <Stack direction={"row"} spacing={6}>
                         <Stack w={"100%"}>
                             <Text as={"h1"} fontSize={"lg"} fontWeight={"bold"}>
@@ -49,17 +62,21 @@ const Item = ({ ...props }) => {
                             </Link>
                         </Stack>
                         <Stack w={"100%"}>
-                            <Link
-                                isExternal
-                                as="a"
-                                href={`https://twitter.com/${props.twitter}`}
-                                target="_blank"
-                            >
-                                <Stack alignItems={"center"} direction={"row"} spacing={2}>
-                                    <Icon as={FaTwitter} />
-                                    <Text>{props.twitter}</Text>
-                                </Stack>
-                            </Link>
+                            <Stack alignItems={"center"} direction={"row"} spacing={2}>
+                                <Icon as={FaTwitter} />
+                                {props.twitter === null || "" ? (
+                                    <Text {...configAvaliableText}>Not Available</Text>
+                                ) : (
+                                    <Link
+                                        isExternal
+                                        as="a"
+                                        href={`https://twitter.com/${props.twitter}`}
+                                        target="_blank"
+                                    >
+                                        <Text>{props.twitter}</Text>
+                                    </Link>
+                                )}
+                            </Stack>
                         </Stack>
                     </Stack>
                     <Stack>
@@ -87,46 +104,14 @@ const Item = ({ ...props }) => {
                     </Box>
                 </Stack>
 
-                <Stack direction={{ base: "column", md: "row" }} spacing={6} width={"100%"}>
+                <Stack spacing={6} width={"100%"}>
                     <Stack spacing={4} w={"100%"}>
-                        <Stack
-                            alignItems={"center"}
-                            direction={"row"}
-                            spacing={2}
-                            {...configInfoText}
-                        >
-                            <Icon as={MdLocationOn} />
-                            <Text>{props.location}</Text>
-                        </Stack>
-                        <Text {...configInfoText}>{props.email}</Text>
+                        <ItemInfo data={props.location} icono={MdLocationOn} />
+                        <ItemInfo data={props.email} icono={FaEnvelope} />
                     </Stack>
                     <Stack spacing={4} w={"100%"}>
-                        <Stack
-                            alignItems={"center"}
-                            direction={"row"}
-                            spacing={2}
-                            {...configInfoText}
-                        >
-                            <Icon as={FaLaptopCode} />
-                            <Text>{props.company}</Text>
-                        </Stack>
-                        <Link
-                            isExternal
-                            as="a"
-                            href={`${props.blog}`}
-                            target="_blank"
-                            {...configInfoText}
-                        >
-                            <Stack
-                                alignItems={"center"}
-                                direction={"row"}
-                                spacing={2}
-                                {...configInfoText}
-                            >
-                                <Icon as={BiLink} />
-                                <Text>{props.blog}</Text>
-                            </Stack>
-                        </Link>
+                        <ItemInfo data={props.company} icono={FaLaptopCode} />
+                        <ItemInfo data={props.blog} icono={BiLink} link={`${props.blog}`} />
                     </Stack>
                 </Stack>
             </Stack>

@@ -10,7 +10,7 @@ const Layout = () => {
             <Stack
                 alignContent={"center"}
                 alignItems={"center"}
-                height={"100vh"}
+                height={"100%"}
                 justifyContent={"center"}
                 left={"50%"}
                 margin={"auto"}
