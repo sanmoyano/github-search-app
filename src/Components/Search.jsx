@@ -1,4 +1,13 @@
-import { Button, FormControl, Icon, Input, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+    Button,
+    FormControl,
+    Icon,
+    Input,
+    Stack,
+    Text,
+    useColorModeValue,
+    Spinner,
+} from "@chakra-ui/react";
 import { BiSearch } from "react-icons/bi";
 import { useContext } from "react";
 
@@ -31,6 +40,7 @@ const Search = () => {
         id,
         twitter,
         userInput,
+        isLoading,
         searchUser,
         handleOnChange,
         handleSubmit,
@@ -81,6 +91,14 @@ const Search = () => {
             </Stack>
             {userInput === "" ? (
                 <Text fontWeight={"semibold"}> Find a user account </Text>
+            ) : isLoading ? (
+                <Spinner
+                    color="blue.500"
+                    emptyColor="gray.200"
+                    size="xl"
+                    speed="0.65s"
+                    thickness="4px"
+                />
             ) : (
                 <Item
                     avatar={avatar}

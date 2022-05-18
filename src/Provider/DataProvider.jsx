@@ -1,5 +1,5 @@
 import { useState, createContext } from "react";
-import { Toast, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 
 export const DataContext = createContext();
 
@@ -22,6 +22,7 @@ const DataProvider = ({ children }) => {
 
     const [searchUser, setSearchUser] = useState([]);
     const [userInput, setUserInput] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
     const toast = useToast();
 
@@ -63,7 +64,6 @@ const DataProvider = ({ children }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault(e);
-
         setUserInput(e);
 
         fetch(`${END_POINT}/${searchUser}`)
@@ -82,6 +82,9 @@ const DataProvider = ({ children }) => {
                 } else {
                     setData(data);
                 }
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
 
         setSearchUser("");
@@ -101,6 +104,7 @@ const DataProvider = ({ children }) => {
         blog,
         id,
         twitter,
+        isLoading,
         searchUser,
         userInput,
         handleOnChange,
