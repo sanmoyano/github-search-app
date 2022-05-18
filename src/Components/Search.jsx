@@ -53,6 +53,7 @@ const Search = () => {
                         <Input
                             as={"input"}
                             fontSize={{ base: "sm", sm: "md" }}
+                            p={2}
                             placeholder={"Search GitHub username..."}
                             value={searchUser}
                             variant={"unstyled"}
@@ -61,6 +62,7 @@ const Search = () => {
                         <Button
                             _hover={{ bgColor: "hover" }}
                             display={{ base: "none", sm: "flex" }}
+                            onClick={handleSubmit}
                             {...buttonConfig}
                         >
                             Search
@@ -70,6 +72,7 @@ const Search = () => {
                         _hover={{ bgColor: "hover" }}
                         display={{ base: "flex", sm: "none" }}
                         marginTop={4}
+                        onClick={handleSubmit}
                         {...buttonConfig}
                     >
                         Search
@@ -77,7 +80,7 @@ const Search = () => {
                 </FormControl>
             </Stack>
             {userInput === "" ? (
-                <Text> Search user </Text>
+                <Text fontWeight={"semibold"}> Find a user account </Text>
             ) : (
                 <Item
                     avatar={avatar}

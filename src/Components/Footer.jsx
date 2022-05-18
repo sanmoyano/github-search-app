@@ -1,9 +1,10 @@
-import { Link, Stack, Text } from "@chakra-ui/react";
+import { Icon, Link, Stack, Text } from "@chakra-ui/react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <Stack>
-            <Text color={"gray.500"} fontSize={"xs"}>
+        <Stack color={"gray.500"} direction={"row"} spacing={4}>
+            <Text fontSize={"xs"}>
                 Made with{" "}
                 <span aria-label="love" role="img">
                     ❤️
@@ -17,6 +18,14 @@ const Footer = () => {
                 }{" "}
                 {"- 2022"}
             </Text>
+            <Stack direction={"row"} spacing={2}>
+                <Link href="https://github.com/sanmoyano" target={"_blank"}>
+                    <Icon as={FaGithub} />
+                </Link>
+                <Link href="https://www.linkedin.com/in/santiago-moyano/" target={"_blank"}>
+                    <Icon as={FaLinkedinIn} />
+                </Link>
+            </Stack>
         </Stack>
     );
 };

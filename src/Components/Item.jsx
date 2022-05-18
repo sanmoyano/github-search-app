@@ -9,10 +9,6 @@ const Item = ({ ...props }) => {
     const colorMode = useColorModeValue("gray.100", "card");
     const infoColorMode = useColorModeValue("gray.300", "background");
 
-    const configInfoText = {
-        fontSize: "xs",
-    };
-
     const configStadisticsText = {
         fontSize: "lg",
         fontWeight: "bold",
@@ -33,13 +29,12 @@ const Item = ({ ...props }) => {
             justifyContent={"space-between"}
             p={10}
             spacing={10}
-            width={"100%"}
         >
             <Stack>
                 <Image borderRadius={"full"} src={props.avatar} w={"250px"} />
             </Stack>
 
-            <Stack spacing={6} w={"100%"}>
+            <Stack spacing={6}>
                 <Stack
                     alignItems={{ base: "center", md: "flex-start" }}
                     direction={"column"}
@@ -47,7 +42,7 @@ const Item = ({ ...props }) => {
                     spacing={6}
                 >
                     <Stack direction={"row"} spacing={6}>
-                        <Stack w={"100%"}>
+                        <Stack>
                             <Text as={"h1"} fontSize={"lg"} fontWeight={"bold"}>
                                 {props.name}
                             </Text>
@@ -61,7 +56,7 @@ const Item = ({ ...props }) => {
                                 <Text>@{props.login}</Text>
                             </Link>
                         </Stack>
-                        <Stack w={"100%"}>
+                        <Stack>
                             <Stack alignItems={"center"} direction={"row"} spacing={2}>
                                 <Icon as={FaTwitter} />
                                 {props.twitter === null || "" ? (
@@ -91,7 +86,6 @@ const Item = ({ ...props }) => {
                     justifyContent={"flex-start"}
                     p={6}
                     spacing={10}
-                    w={"100%"}
                 >
                     <Box>
                         Repos <Text {...configStadisticsText}> {props.repos} </Text>
@@ -104,15 +98,15 @@ const Item = ({ ...props }) => {
                     </Box>
                 </Stack>
 
-                <Stack spacing={6} width={"100%"}>
-                    <Stack spacing={4} w={"100%"}>
+                <Stack spacing={6}>
+                    <Stack spacing={4}>
                         <ItemInfo data={props.location} icono={MdLocationOn} />
                         <ItemInfo data={props.email} icono={FaEnvelope} />
                     </Stack>
                     <Stack spacing={4} w={"100%"}>
                         <ItemInfo data={props.company} icono={FaLaptopCode} />
                         <Link as="a" href={props.blog} target={"_blank"}>
-                            <ItemInfo data={props.blog} icono={BiLink} />
+                            <ItemInfo data={`${props.login} website`} icono={BiLink} />
                         </Link>
                     </Stack>
                 </Stack>

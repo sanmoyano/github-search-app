@@ -13,7 +13,7 @@ const Header = () => {
             justifyContent={"space-between"}
             width={"100%"}
         >
-            <Text as={"h1"} fontWeight={"bold"}>
+            <Text as={"h1"} fontWeight={"extrabold"}>
                 devfinder
             </Text>
             <Button onClick={toggleColorMode}>
