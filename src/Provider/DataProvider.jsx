@@ -21,6 +21,7 @@ const DataProvider = ({ children }) => {
     const [twitter, setTwitter] = useState("");
 
     const [searchUser, setSearchUser] = useState([]);
+    const [userInput, setUserInput] = useState("");
 
     const toast = useToast();
 
@@ -61,7 +62,9 @@ const DataProvider = ({ children }) => {
     const END_POINT = "https://api.github.com/users";
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(e);
+
+        setUserInput(e);
 
         fetch(`${END_POINT}/${searchUser}`)
             .then((response) => response.json())
@@ -99,6 +102,7 @@ const DataProvider = ({ children }) => {
         id,
         twitter,
         searchUser,
+        userInput,
         handleOnChange,
         handleSubmit,
     };

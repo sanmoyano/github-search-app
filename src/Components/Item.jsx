@@ -111,7 +111,9 @@ const Item = ({ ...props }) => {
                     </Stack>
                     <Stack spacing={4} w={"100%"}>
                         <ItemInfo data={props.company} icono={FaLaptopCode} />
-                        <ItemInfo data={props.blog} icono={BiLink} link={`${props.blog}`} />
+                        <Link as="a" href={props.blog} target={"_blank"}>
+                            <ItemInfo data={props.blog} icono={BiLink} />
+                        </Link>
                     </Stack>
                 </Stack>
             </Stack>

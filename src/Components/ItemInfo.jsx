@@ -1,7 +1,7 @@
-import { Icon, Link, Stack, Text } from "@chakra-ui/react";
+import { Icon, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
-const ItemInfo = ({ icono, data, link }) => {
+const ItemInfo = ({ icono, data }) => {
     const configAvaliableText = {
         fontSize: "xs",
         color: "gray.500",
@@ -15,11 +15,13 @@ const ItemInfo = ({ icono, data, link }) => {
         <Stack alignItems={"center"} direction={"row"} spacing={2}>
             <Icon as={icono} />
             {data || null || ("" && " ") ? (
-                <Link as="a" href={link} target={"_blank"}>
-                    <Text {...configInfoText}>{data}</Text>
-                </Link>
+                <Text as={"p"} {...configInfoText}>
+                    {data}
+                </Text>
             ) : (
-                <Text {...configAvaliableText}>Not Available</Text>
+                <Text as={"p"} {...configAvaliableText}>
+                    Not Available
+                </Text>
             )}
         </Stack>
     );

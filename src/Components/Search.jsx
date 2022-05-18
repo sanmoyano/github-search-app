@@ -1,6 +1,6 @@
 import { Button, FormControl, Icon, Input, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { BiSearch } from "react-icons/bi";
-import { useContext, useCallback } from "react";
+import { useContext } from "react";
 
 import { DataContext } from "../Provider/DataProvider";
 import Item from "../Components/Item";
@@ -30,6 +30,7 @@ const Search = () => {
         blog,
         id,
         twitter,
+        userInput,
         searchUser,
         handleOnChange,
         handleSubmit,
@@ -75,22 +76,25 @@ const Search = () => {
                     </Button>
                 </FormControl>
             </Stack>
-
-            <Item
-                avatar={avatar}
-                bio={bio}
-                blog={blog}
-                company={company}
-                email={email}
-                followers={followers}
-                following={following}
-                id={id}
-                location={location}
-                login={login}
-                name={userName}
-                repos={repos}
-                twitter={twitter}
-            />
+            {userInput === "" ? (
+                <Text> Search user </Text>
+            ) : (
+                <Item
+                    avatar={avatar}
+                    bio={bio}
+                    blog={blog}
+                    company={company}
+                    email={email}
+                    followers={followers}
+                    following={following}
+                    id={id}
+                    location={location}
+                    login={login}
+                    name={userName}
+                    repos={repos}
+                    twitter={twitter}
+                />
+            )}
         </>
     );
 };
