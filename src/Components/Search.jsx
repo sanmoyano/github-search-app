@@ -93,7 +93,7 @@ const Search = () => {
                 <Text fontWeight={"semibold"}> Find a user account </Text>
             ) : isLoading ? (
                 <Spinner
-                    color="blue.500"
+                    color="button"
                     emptyColor="gray.200"
                     size="xl"
                     speed="0.65s"
