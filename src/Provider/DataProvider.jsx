@@ -62,31 +62,32 @@ const DataProvider = ({ children }) => {
 
     const END_POINT = "https://api.github.com/users";
 
-    const handleSubmit = (e) => {
-        e.preventDefault(e);
-        setUserInput(e);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${END_POINT}/${searchUser}`);
+            const data = await response.json();
 
-        fetch(`${END_POINT}/${searchUser}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.message === "Not Found") {
-                    toast({
-                        position: "top-right",
-                        duration: 3000,
-                        isClosable: true,
-                        isVisible: true,
-                        title: "User Not Found",
-                        description: "Please enter a valid username",
-                        status: "error",
-                    });
-                } else {
-                    setData(data);
-                }
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
-
+            if (data.message === "Not Found") {
+                toast({
+                    position: "top-right",
+                    duration: 3000,
+                    isClosable: true,
+                    isVisible: true,
+                    title: "User Not Found",
+                    description: "Please enter a valid username",
+                    status: "error",
+                });
+                throw Error(data.message);
+            } else {
+                setUserInput(e);
+                setData(data);
+            }
+        } catch (error) {
+            console.log(error); //maneja si hay un error en la api
+        } finally {
+            setIsLoading(false);
+        }
         setSearchUser("");
     };
 
